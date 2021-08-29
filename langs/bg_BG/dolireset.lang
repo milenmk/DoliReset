@@ -1,0 +1,49 @@
+# Copyright (C) 2021 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleDoliResetName'
+ModuleDoliResetName = Doli Reset
+# Module description 'ModuleDoliResetDesc'
+ModuleDoliResetDesc = Doli Reset description
+
+#
+# Admin page
+#
+DoliResetSetup = Doli Reset setup
+Settings = Settings
+DoliResetSetupPage = Doli Reset setup page
+
+
+#
+# About page
+#
+About = About
+DoliResetAbout = About Doli Reset
+DoliResetAboutPage = Doli Reset about page
+
+#
+# Common
+#
+ResetWarning=Ако искате да изтриете всички данни, първо изтрийте файловете в папка "Документи" и след това данните в базата данни!
+FFDeleteConfirm=Всички файлове и папки са изтрити успешно
+DeleteFF=Изтрий всички файлове и папки в "Документи"
+DeleteDB=Изтрий базата данни
+DeleteDBTooltip=След натискане на бутона, ако операцията е успешна, ще бъдете пренасочени към страницата за инсталация!
+DeleteWarning=Сигурни ли сте?
+HideAlert=Не показвай отново?

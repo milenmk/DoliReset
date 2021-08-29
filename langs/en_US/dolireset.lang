@@ -1,0 +1,48 @@
+# Copyright (C) 2021 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleDoliResetName'
+ModuleDoliResetName = Doli Reset
+# Module description 'ModuleDoliResetDesc'
+ModuleDoliResetDesc = Doli Reset description
+
+#
+# Admin page
+#
+DoliResetSetup = DoliReset setup
+Settings = Settings
+
+
+#
+# About page
+#
+About = About
+DoliResetAbout = About Doli Reset
+DoliResetAboutPage = Doli Reset about page
+
+#
+# Common
+#
+ResetWarning=If you want to delete all data, first delete the files in the "Documents" folder and then the data in the database! 
+FFDeleteConfirm = All files and subfolders deleted successfully.
+DeleteFF=Delete all files and folders in "Documents"?
+DeleteDB = Delete database?
+DeleteDBTooltip = After clicking the button, if the operation is successful, you will be redirected to the installation page!
+DeleteWarning=Are you sure?
+HideAlert=Hide Alert?
