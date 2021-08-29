@@ -72,7 +72,7 @@ class DoliReset
         if (is_array($structure)) {
             foreach ($structure as $file) {
                 if (is_dir($file)) {
-                    $this->deleteAll($file, true);
+                    $this->deleteContentDocumentsFolder($file, true);
                 } elseif (is_file($file)) {
                     unlink($file);
                 }
