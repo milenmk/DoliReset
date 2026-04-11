@@ -58,48 +58,96 @@ class DoliReset
     /**
      * Delete the content of Dolibarr documents folder
      *
-     * @param    string    $dir    Path to dolibarr documents folder
-     * @param    boolean   $remove    If false, then remove the subfolders and files. If true - delete entire folder.
-     * @return void
+     * @param string $rootDir Path to dolibarr documents folder
+     * @return int
      */
-    public function deleteContentDocumentsFolder($dir, $remove = false)
+    public function cleanDocumentsFolder($rootDir)
     {
         global $langs;
 
         $error = '';
 
-        $structure = glob(rtrim($dir, "/") . '/*');
-        if (is_array($structure)) {
-            foreach ($structure as $file) {
-                if (is_dir($file)) {
-                    $this->deleteContentDocumentsFolder($file, true);
-                } elseif (is_file($file)) {
-                    unlink($file);
-                }
+        $items = glob(rtrim($rootDir, '/') . '/*');
+
+        if (!is_array($items)) {
+            return -1;
+        }
+
+        foreach ($items as $item) {
+            if (is_dir($item)) {
+                // Level 1 (module folder like facture/)
+                $this->deleteInside($item);
             }
         }
-        if ($remove) {
-            rmdir($dir);
+
+        return 1;
+    }
+
+    private function deleteInside($dir)
+    {
+        $items = glob(rtrim($dir, '/') . '/*');
+
+        if (!is_array($items)) {
+            return;
         }
-        if (!$error) {
-            return setEventMessages($langs->trans("FFDeleteConfirm"), null, 'mesgs');
-        } else {
-            return $error;
+
+        foreach ($items as $item) {
+            if (is_dir($item)) {
+                $this->deleteDir($item); // delete completely
+            } elseif (is_file($item)) {
+                unlink($item);
+            }
         }
     }
 
+    private function deleteDir($dir)
+    {
+        $items = glob(rtrim($dir, '/') . '/*');
+
+        if (is_array($items)) {
+            foreach ($items as $item) {
+                if (is_dir($item)) {
+                    $this->deleteDir($item);
+                } else {
+                    unlink($item);
+                }
+            }
+        }
+
+        rmdir($dir);
+    }
+
+    /**
+     * Drop all tables in databased function
+     *
+     * @return int
+     */
     public function deleteDatabase()
     {
+        global $dolibarr_main_db_prefix;
 
-        $error = '';
+        if (empty($dolibarr_main_db_prefix)) {
+            return -1;
+        }
 
         $this->db->query('SET foreign_key_checks = 0');
 
-        $result = $this->db->query("SHOW TABLES");
+        $sql = "SHOW TABLES LIKE '" . $this->db->escape($dolibarr_main_db_prefix) . "%'";
+        $result = $this->db->query($sql);
 
         if ($result) {
             while ($row = $this->db->fetch_array($result, MYSQLI_NUM)) {
-                $this->db->query('DROP TABLE IF EXISTS ' . $row[0]);
+                $table = array_values($row)[0];
+
+                if (
+                    empty($table) ||
+                    empty($dolibarr_main_db_prefix) ||
+                    !str_starts_with($table, $dolibarr_main_db_prefix)
+                ) {
+                    continue;
+                }
+
+                $this->db->DDLDropTable($table);
             }
         } else {
             $this->error = $this->db->lasterror();
@@ -108,5 +156,7 @@ class DoliReset
         }
 
         $this->db->query('SET foreign_key_checks = 1');
+
+        return 1;
     }
 }

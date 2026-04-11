@@ -71,7 +71,7 @@ class modDoliReset extends DolibarrModules
 
         // Family can be 'base' (core modules),'crm','financial','hr','projects','products','ecm','technic' (transverse modules),'interface' (link with external tools),'other','...'
         // It is used to group modules by family in module setup page
-        $this->family = "other";
+        $this->family = "MINKOV.DEV";
 
         // Module position in the family on 2 digits ('01', '10', '20', ...)
         $this->module_position = '90';
@@ -88,10 +88,10 @@ class modDoliReset extends DolibarrModules
 
         // Author
         $this->editor_name = 'Milen Karaganski';
-        $this->editor_url = 'https://blacktiehost.com';
+        $this->editor_url = 'https://minkov.dev';
 
         // Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-        $this->version = '1.0';
+        $this->version = '1.1';
         // Url to the file with your last numberversion of this module
         //$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 

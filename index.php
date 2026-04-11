@@ -124,12 +124,13 @@ llxHeader("", $langs->trans("ModuleDoliResetName"));
 print load_fiche_titre($langs->trans("ModuleDoliResetName"), '', 'dolireset.png@dolireset');
 
 if ($action == 'deleteFF') {
-    $dolireset->deleteContentDocumentsFolder($dolibarr_main_data_root);
+    $dolireset->cleanDocumentsFolder($dolibarr_main_data_root);
     print setEventMessages($langs->trans("FFDeleteConfirm"), null, 'mesgs');
 }
 if ($action == 'deleteDB') {
     $dolireset->deleteDatabase($dolibarr_main_data_root);
-    print '<meta http-equiv="refresh" content="0;url=' . DOL_URL_ROOT . '/install/index.php">';
+    header("Location: " . DOL_URL_ROOT . "/install/index.php");
+    exit;
 }
 
 ?>
