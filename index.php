@@ -155,7 +155,7 @@ if ($action == 'deleteDB') {
                 <tbody>
                     <tr>
                         <td><?php print $langs->trans('Location'); ?>: <?php print $dolibarr_main_data_root; ?></td>
-                        <td><a class="butAction" href="<?php print $_SERVER['PHP_SELF']; ?>?action=deleteFF"><?php print $langs->trans('Delete'); ?></a></td>
+                        <td><a class="butAction" href="<?php print $_SERVER['PHP_SELF']; ?>?action=deleteFF&token=<?= newToken() ?>"><?php print $langs->trans('Delete'); ?></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -176,7 +176,7 @@ if ($action == 'deleteDB') {
                     <tbody>
                         <tr>
                             <td><?php print $langs->trans('Name'); ?>: <?php print $dolibarr_main_db_name; ?><br><?php print $langs->trans('DeleteDBTooltip'); ?></td>
-                            <td><a class="butAction" href="<?php print $_SERVER['PHP_SELF']; ?>?action=deleteDB" onclick="return confirm('<?php print $langs->trans('DeleteWarning'); ?>');"><?php print $langs->trans('Delete'); ?></a></td>
+                            <td><a class="butAction" href="<?php print $_SERVER['PHP_SELF']; ?>?action=deleteDB&token=<?= newToken() ?>" onclick="return confirm('<?php print $langs->trans('DeleteWarning'); ?>');"><?php print $langs->trans('Delete'); ?></a></td>
                         </tr>
                     </tbody>
                 </table>
