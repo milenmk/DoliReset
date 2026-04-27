@@ -125,7 +125,7 @@ print load_fiche_titre($langs->trans("ModuleDoliResetName"), '', 'dolireset.png@
 
 if ($action == 'deleteFF') {
     $dolireset->cleanDocumentsFolder($dolibarr_main_data_root);
-    print setEventMessages($langs->trans("FFDeleteConfirm"), null, 'mesgs');
+    setEventMessages($langs->trans("FFDeleteConfirm"), null, 'mesgs');
 }
 if ($action == 'deleteDB') {
     $dolireset->deleteDatabase($dolibarr_main_data_root);
